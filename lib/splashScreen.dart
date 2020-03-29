@@ -41,7 +41,7 @@ class SplashScreenState extends State<SplashScreen> {
                         backgroundColor: Colors.black,
                         radius: 50.0,
                         child: Icon(
-                          Icons.attach_money,
+                          Icons.add,
                           color: Colors.greenAccent,
                           size: 50.0,
                         ),
@@ -50,7 +50,7 @@ class SplashScreenState extends State<SplashScreen> {
                         padding: EdgeInsets.only(top: 10.0),
                       ),
                       Text(
-                        "CORONA VIRUS UPDATE",
+                        "CORONA WATCHER",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
