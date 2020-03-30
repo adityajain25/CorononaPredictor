@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+
 class HomeScreen extends StatefulWidget {
 
   @override
@@ -10,207 +12,105 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen>  {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery. of(context). size. width;
+    double height = MediaQuery. of(context). size. height;
     return Scaffold(
         appBar: new AppBar(
-          backgroundColor: Colors.deepPurple[900],
-          elevation: 30,
+          backgroundColor: Colors.white,
+          elevation: 0,
           centerTitle: true,
-          title: Text("Overview",),
+          title: Text("Overview",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.redAccent,
+              fontSize: 30,
+            ),
+          ),
         ),
         body: Container(
-            color: Colors.cyan[50],
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            color: Colors.red[10],
             child:ListView(
               scrollDirection: Axis.vertical,
               children: <Widget>[
                 SizedBox(
-                  height: 50,
+                  height: height*0.05,
                 ),
-                Container(
-                  height: 90,
-                  width: 50,
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      stops: [0, 1],
-                      colors: [
-                        Color(0xFFE8EAF6),
-                        Color(0XFFC5CAE9),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(70),
-                    ),
-                  ),
-                  child: SizedBox.expand(
-                    child: FlatButton(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Text("Total Cases",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                            textAlign: TextAlign.right,
-                          ),
-                          Text("500",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                            textAlign: TextAlign.right,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    sumcon("Total Cases","722,350",height*0.15,width*0.47,Colors.redAccent,Colors.black45),
+                    sumcon("New Cases","500",height*0.15,width*0.47,Colors.black,Colors.black45),
+                  ],
+                ),
+
+                SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    sumcon("Total Deaths","500",height*0.15,width*0.47,Colors.black,Colors.black45),
+                    sumcon("New Deaths","500",height*0.15,width*0.47,Colors.black,Colors.black45),
+                  ],
                 ),
                 SizedBox(
                   height: 30,
                 ),
-                Container(
-                  height: 90,
-                  width: 50,
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      stops: [0, 0],
-                      colors: [
-                        Color(0xFFE1BEE7),
-                        Color(0XFFCE93D8),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(70),
-                    ),
-                  ),
-                  child: SizedBox.expand(
-                    child: FlatButton(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Text("Deaths",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                          Text("200",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                            textAlign: TextAlign.right,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    sumcon("Total Recovered","500",height*0.15,width*0.47,Colors.black,Colors.black45),
+                    sumcon("Critical Cases","500",height*0.15,width*0.47,Colors.black,Colors.black45),
+                  ],
                 ),
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  height: 90,
-                  width: 50,
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      stops: [0, 0],
-                      colors: [
-                        Color(0xFFC8E6C9),
-                        Color(0XFFA5D6A7),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(70),
-                    ),
-                  ),
-                  child: SizedBox.expand(
-                    child: FlatButton(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Text("Recoveries",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          Text("100",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                            textAlign: TextAlign.right,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  height: 90,
-                  width: 50,
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      stops: [0, 0],
-                      colors: [
-                        Color(0xFF00ACC1),
-                        Color(0XFF80DEEA),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(70),
-                    ),
-                  ),
-                  child: SizedBox.expand(
-                    child: FlatButton(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Text("Active Cases",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                          Text("50",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                            textAlign: TextAlign.right,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                WebView(
+                  initialUrl: Uri.dataFromString('<html><body><iframe style="width:100%"; width="560" height="380" src="https://coronavirus.app/map?mode=infected&embed=true" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></body></html>', mimeType: 'text/html').toString(),
+                  javascriptMode: JavascriptMode.unrestricted,
                 )
               ],)));
+
   }}
 
+
+  Widget sumcon(num,text,height,width,tc1,tc2)  => Container(
+      height: height,
+      width: width,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(35),
+        ),
+        border: Border.all(
+          color: Colors.redAccent, //                   <--- border color
+          width: 3.0,
+        ),
+      ),
+      child: SizedBox.expand(
+        child: FlatButton(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text(text,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: tc1,
+                  fontSize: 30,
+                ),
+                textAlign: TextAlign.left,
+              ),
+              Text(num,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  color: tc2,
+                  fontSize: 20,
+                ),
+                textAlign: TextAlign.right,
+              )
+            ],
+          ),
+        ),
+      ),
+    );
 
